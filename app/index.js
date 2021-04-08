@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-// Set our postgres environement
+// PostgreSQLの設定
 const { Pool } = require('pg')
 const pool = new Pool({
   user: 'postgres',
@@ -11,7 +11,7 @@ const pool = new Pool({
   port: 5432,
 })
 
-//Index Route
+// ルーティングの設定
 app.get('/', async(req, res) => {
   const { rows } = await pool.query('select * from users')
   res.send(rows)
